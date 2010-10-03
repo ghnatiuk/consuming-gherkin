@@ -11,7 +11,7 @@ desc "Generate dot files"
 task :dot do
   FileList["ragel/*rl"].each do |f|
     out = RAGEL + "/#{File.basename(f, '.rl')}.dot"
-    sh "ragel -V -o #{out} #{f}"
+    sh "ragel -V -p -o #{out} #{f}"
   end
 end
 
