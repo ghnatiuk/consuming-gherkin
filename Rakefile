@@ -15,4 +15,4 @@ task :dot do
   end
 end
 
-task :default => :ragel
+task :default => [:ragel, :dot]
