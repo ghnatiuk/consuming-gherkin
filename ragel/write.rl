@@ -1,3 +1,7 @@
+/*
+ * For experimenting with write commands.
+ */
+
 %%{
   machine writing;
   main := 'abcd';
