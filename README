@@ -1,8 +1,13 @@
-= Consuming Gherkin: One Byte at a Time
+== Consuming Gherkin: One Byte at a Time
 
-== I am a presentation!
+=== I am a presentation!
 
-== Links
+=== Pro Tips
+
+ $ gem install watchr
+ $ watch ragel.watchr
+
+=== Links
 * Ragel homepage: http://complang.org/ragel
 * Graphviz: http://www.graphviz.org
 * Graphviz OS X: http://www.graphviz.org/Download_macos.php
