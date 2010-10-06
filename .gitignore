@@ -1,2 +1,4 @@
 ragel/*.rb
 ragel/*.dot
+.bundle
+Gemfile.lock
