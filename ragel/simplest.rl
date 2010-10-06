@@ -1,10 +1,4 @@
-%%{
-  machine m;
-  main := alpha* @{ puts "Match" };
+%%{ 
+  machine simplest;
+  main := 'a';
 }%%
-
-data = "abc".unpack("c*");
-
-%%write data;
-%%write init;
-%%write exec;
