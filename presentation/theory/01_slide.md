@@ -14,9 +14,10 @@
 * The states disappear into the background
 !SLIDE 
 # Control!
-!SLIDE
+!SLIDE center
 # Example
-* /a/
+    @@@ Ruby
+    /a/
 * pretty picture
 !SLIDE
 # Ragel converts a series of machines into a table-driven* FSM that reads bytes one at a time until it reaches the end of input

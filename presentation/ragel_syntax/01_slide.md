@@ -7,14 +7,15 @@
 * %%
 * main
 
-!SLIDE bullets incremental
+!SLIDE bullets incremental center
 # Simple Machine Definitions
 
-* 'text'
-* "text"
-* [txt]
-* 'a'..'z'
-* any, white, lower, alnum, digit
+    @@@ Ruby
+    'text'
+    "text"
+    [tex]
+    'a'..'z'
+    any, white, lower, alnum, digit
 
 !SLIDE bullets incremental
 # Regular Language Operators
@@ -33,18 +34,20 @@
 * Finishing: @
 * Leaving: %
 
-!SLIDE bullets
+!SLIDE bullets center
 # Don't use inline actions
 
-* '\n'+ @{ puts "I have a newline" }
+    @@@ Ruby
+    '\n'+ @{ puts "I have a newline" }
 
 !SLIDE bullets
 # Do name your actions
+    @@@ Ruby
+    action CountNewlines {
+      @newlines += 1
+    }
 
-* action CountNewlines {
-    @newlines += 1
-  }
-* EOL = '\n'+ @CountNewlines
+    EOL = '\n'+ @CountNewlines
 
 !SLIDE bullets
 # Guards and Nondeterminism
