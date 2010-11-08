@@ -16,8 +16,8 @@
 
 * Why are you here?
 
-!SLIDE 
-# "Now he has two problems"
-
 !SLIDE
 # Parses _regular languages_ (not CFGs)
+
+!SLIDE 
+# "Now he has two problems"
