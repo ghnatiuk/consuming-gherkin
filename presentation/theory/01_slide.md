@@ -9,7 +9,8 @@
 # /facepalm
 !SLIDE bullets
 # State Machines
-* The characters in a regex are the _transitions_
+* The characters in the regex literal are the _transitions_
+* Given the regex /abc/, "a", "b" and "c" are named transitions
 * The characters of input are the _events_
 * The states disappear into the background
 !SLIDE 
