@@ -25,6 +25,7 @@
 !SLIDE bullets incremental
 # Tips and Tricks
 .notes Remember regex == state machine, so inherently event driven
+.notes Acceptance: when Ragel finishes its work and the current state is not less than the final lexer state
 
 * Externalize proof of acceptance
 * Parameterize the ctor with object that receives events
@@ -49,28 +50,27 @@
       end
     end
 
-!SLIDE small
+!SLIDE 
 
-    @@@ Ruby
-    feature = <<FEATURE
     Feature: Autocuke
+
       Scenario: Motivation
         Given plain text is boring
         Then a GUI must be the answer
-    FEATURE
 
+!SLIDE small
+
+    @@@ Ruby
     recorder = SexpRecorder.new
     Lexer.new(recorder).scan(feature)
-    recorder.to_sexp
 
-    # => [
-    #      [:feature, "Feature", "Autocuke", 1],
-    #      [:scenario, "Scenario", "Motivation", 2],
-    #      [:step, "Given", "plain text is boring" 3],
-    #      [:step, "Then", "a GUI must be the answer", 4]
-    #    ]
+    recorder.to_sexp.should == [
+      [:feature,  "Feature",  "Autocuke",                 1],
+      [:scenario, "Scenario", "Motivation",               2],
+      [:step,     "Given",    "plain text is boring",     3],
+      [:step,     "Then",     "a GUI must be the answer", 4]
+    ]
 
 !SLIDE
 * utf8_pack
 * 1.8/1.9 and UTF8
-
