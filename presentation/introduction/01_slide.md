@@ -1,27 +1,19 @@
 !SLIDE 
 # Consuming Gherkin
-.notes This is the Gherkin state machine as it exists today. It might not look like this if we were to rewrite it today--hopefully it would be prettier--but it gets the job done. 
+## One Byte at a Time
+
+!SLIDE center bullets incremental
+# Ragel
+* A tool for building parsers...
+* ...by specifying state machines...
+* ...with regular expressions.
 
 !SLIDE bullets incremental
-# What Uses Ragel
-
-* Mongrel/Thin/Unicorn/Command Tower
-* JSON gem
-* Redcloth
-* Hpricot
-* Erbal
-* Gherkin (oh yeah...)
-
-!SLIDE bullets
-# Why you are here
-
-* Why are you here?
-
-!SLIDE
-# Parses _regular languages_ (not CFGs)
+# Some people, when confronted with a problem, think "I know, I'll use regular expressions." 
 
 !SLIDE 
-# "Now he has two problems"
+# "Now they have two problems"
+.notes Artax dying
 
 !SLIDE smallest
 
@@ -61,3 +53,20 @@
     Tokens = BOM? (space | EOL)* (Tags | Comment | FeatureHeading | BackgroundHeading | ScenarioHeading | ScenarioOutlineHeading | ExamplesHeading | Step | Row | PyString)* (space | EOL)* EOF;
     main := Tokens %end_feature @!end_feature;
 
+!SLIDE bullets incremental
+# What Uses Ragel
+
+* Mongrel/Thin/Unicorn/Command Tower
+* JSON gem
+* Redcloth
+* Hpricot
+* Erbal
+* Gherkin (oh yeah...)
+
+!SLIDE bullets
+# Why you are here
+
+* Why are you here?
+
+!SLIDE
+# Parses _regular languages_ (not CFGs)
