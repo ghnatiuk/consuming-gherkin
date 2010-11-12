@@ -2,7 +2,6 @@
 # BDD with Ragel
 
 !SLIDE bullets incremental
-
 * Get Ragel parsing _something_
 * There are no rules (RSpec, then Cucumber)
 * Prove it
@@ -23,14 +22,17 @@
 * pretty_formatter.feature
 
 !SLIDE bullets incremental
-# Tips and Tricks
+# Testing
+.notes SUT
+.notes Driving out behavior
+.notes Event based design of Gherkin came about out of need to easily test lexer
 .notes Remember regex == state machine, so inherently event driven
 .notes Acceptance: when Ragel finishes its work and the current state is not less than the final lexer state
 
-* Externalize proof of acceptance
+* Externalize evidence of operation
+* Test spy: SexpRecorder
 * Parameterize the ctor with object that receives events
 * (Dependency Injection)
-* Test spy: SexpRecorder
 
 !SLIDE
 .notes We know not really sexps but annoying pedants is more fun than being correct

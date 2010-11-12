@@ -186,27 +186,24 @@
 
     @@@ Ruby
     'text'
-    "text"
     [tex]
-    'a'..'z'
+    't'..'x'
+    /text/
     any, white, lower, alnum, digit
 
-!SLIDE bullets incremental
+!SLIDE bullets 
 # Regular Language Operators
 
-* Union: expr | expr
-* Intersection: expr & expr
-* Difference: expr - expr
-* Concatenation: expr . expr
-* Kleene Star, One or more, Optional, Negation (*,+,?,!)
+* Union
+* Intersection
+* Difference
+* Concatenation
+* Kleene star, etc... (*, +, ?, !)
 
-!SLIDE bullets incremental
-# Actions!
-
-* Entry: < 
-* All Transitions: $
-* Finishing: @
-* Leaving: %
+!SLIDE bullets center
+# Actions
+    @@@ Ruby
+    Vowels = [aeiou] >print_me;
 
 !SLIDE bullets center
 # Inline actions
@@ -222,11 +219,36 @@
     }
 
     EOL = '\n'+ @CountNewlines
+.notes Why you probably want to do this.  
+.notes so you can extract them easily to another machine, and have
+.notes different language implementations
+!SLIDE bullets
+
+* Entry: < 
+* All Transitions: $
+* Finishing: @
+* Leaving: %
+
 
 !SLIDE bullets
 # Guards and Nondeterminism
 
-* finish-guarded:  :>>
-* entry-guarded: :>
-* left-guarded: <:
-* longest-match kleene-star: **
+* finish-guarded
+* :>>
+
+!SLIDE center
+    @@@ Ruby
+    any* :>> 'STOP!'
+
+!SLIDE bullets
+* entry-guarded
+* :>
+
+!SLIDE center
+    @@@ Ruby
+    any* :> 'STOP!'
+
+!SLIDE bullets
+* left-guarded       <:
+* longest-match      **
+* named-priorities

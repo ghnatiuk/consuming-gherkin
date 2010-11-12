@@ -3,7 +3,7 @@
 !SLIDE 
 # Regular expressions are a (horrible|great) syntax
 !SLIDE bullets incremental
-# Some Regular Syntax
+# Some Perfectly Normal Syntax
 * ^$ \A\Z
 * [A-Za-z] ::alpha::
 * oh (hai|hi) (\w+)
