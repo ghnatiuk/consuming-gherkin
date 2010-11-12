@@ -1,0 +1,16 @@
+digraph m {
+	rankdir=LR;
+	node [ shape = point ];
+	ENTRY;
+	en_0;
+	node [ shape = circle, height = 0.2 ];
+	node [ fixedsize = true, height = 0.65, shape = doublecircle ];
+	1;
+	node [ shape = circle ];
+	0 -> 1 [ label = "'a', 'e', 'i', 'o', 'u' / print_me" ];
+	0 -> 1 [ label = "DEF" ];
+	1 -> 1 [ label = "'a', 'e', 'i', 'o', 'u' / print_me" ];
+	1 -> 1 [ label = "DEF" ];
+	ENTRY -> 0 [ label = "IN" ];
+	en_0 -> 0 [ label = "main" ];
+}
