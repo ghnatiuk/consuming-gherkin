@@ -41,5 +41,4 @@ Ragel makes it easier to work with regular languages
 * "a", "b" and "c" are named transitions
 * ![abc](abc.png)
 
-!SLIDE
-# Ragel converts a series of machines into a table-driven* FSM that reads bytes one at a time until it reaches the end of input
+.notes Ragel converts a series of machines into a table-driven* FSM that reads bytes one at a time until it reaches the end of input
