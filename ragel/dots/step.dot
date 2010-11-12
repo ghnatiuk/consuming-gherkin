@@ -1,0 +1,28 @@
+digraph lexer_common {
+	rankdir=LR;
+	node [ shape = point ];
+	ENTRY;
+	node [ shape = circle, height = 0.2 ];
+	node [ fixedsize = true, height = 0.65, shape = doublecircle ];
+	14;
+	node [ shape = circle ];
+	1 -> 2 [ label = "'A' / start_keyword" ];
+	1 -> 7 [ label = "'B' / start_keyword" ];
+	1 -> 9 [ label = "'G' / start_keyword" ];
+	1 -> 13 [ label = "'T', 'W' / start_keyword" ];
+	2 -> 3 [ label = "'n'" ];
+	3 -> 4 [ label = "'d'" ];
+	4 -> 5 [ label = "SP" ];
+	5 -> 6 [ label = "-128..'\\t', '\\v'..127 / end_keyword, begin_content" ];
+	6 -> 14 [ label = "'\\n' / store_step_content" ];
+	6 -> 6 [ label = "DEF" ];
+	7 -> 8 [ label = "'u'" ];
+	8 -> 4 [ label = "'t'" ];
+	9 -> 10 [ label = "'i'" ];
+	10 -> 11 [ label = "'v'" ];
+	11 -> 12 [ label = "'e'" ];
+	12 -> 4 [ label = "'n'" ];
+	13 -> 11 [ label = "'h'" ];
+	14 -> 14 [ label = "'\\n'" ];
+	ENTRY -> 1 [ label = "IN" ];
+}
