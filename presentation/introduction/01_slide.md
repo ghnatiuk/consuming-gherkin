@@ -19,6 +19,6 @@
 !SLIDE bullets incremental
 # Some people, when confronted with a problem, think "I know, I'll use regular expressions." 
 
-!SLIDE 
+!SLIDE center
 # "Now they have two problems"
-.notes Artax dying
+![atreyu](atreyu.png)

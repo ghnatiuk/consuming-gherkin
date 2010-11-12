@@ -10,12 +10,12 @@ class RagelTest
   }%%
 
   def initialize(str)
-    %%write data;
+    %%write data
 
     data = str.unpack("c*");
 
-    %%write init;
-    %%write exec;
+    %%write init
+    %%write exec
   end
 end
 
