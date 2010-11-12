@@ -5,6 +5,7 @@
 * Our employers
 * Aslak Hellesøy and the rest of the Cucumber team
 * Scott Chacon for making Showoff
+* Charlie Matt for Artax
 
 !SLIDE bullets
 # Links

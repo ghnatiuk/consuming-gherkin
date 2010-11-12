@@ -229,34 +229,44 @@
 * Finishing: @
 * Leaving: %
 
-!SLIDE center
-# Entering Action:
+!SLIDE center bullets
+# Entering Action
     @@@ Ruby
     main := 'Pony' >do_something
+*  
 
 ![enter](entering.png)
 
-!SLIDE center
-# All Transitions Action:
+!SLIDE center bullets
+# All Transitions Action
     @@@ Ruby
     main := 'Pony' $do_something
 
+*  
+
 ![all_trans](all_trans.png)
-!SLIDE center
-# Finishing Action:
+
+!SLIDE center bullets
+# Finishing Action
     @@@ Ruby
     main := ('pon' 'y'+) @do_something
+
+*  
+
 ![finish](finish.png)
 
-!SLIDE center
-# Leaving Action:
+!SLIDE center bullets
+# Leaving Action
     @@@ Ruby
     main := 'Pony' %do_something
 
+* 
+
 ![leaving](leaving.png)
 
-!SLIDE bullets
+!SLIDE 
 # Guards and Nondeterminism
+!SLIDE bullets
 
 * finish-guarded
 * :>>
