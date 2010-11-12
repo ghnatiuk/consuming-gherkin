@@ -224,11 +224,36 @@
 .notes different language implementations
 !SLIDE bullets
 
-* Entry: < 
+* Entering: < 
 * All Transitions: $
 * Finishing: @
 * Leaving: %
 
+!SLIDE center
+# Entering Action:
+    @@@ Ruby
+    main := 'Pony' >do_something
+
+![enter](entering.png)
+
+!SLIDE center
+# All Transitions Action:
+    @@@ Ruby
+    main := 'Pony' $do_something
+
+![all_trans](all_trans.png)
+!SLIDE center
+# Finishing Action:
+    @@@ Ruby
+    main := ('pon' 'y'+) @do_something
+![finish](finish.png)
+
+!SLIDE center
+# Leaving Action:
+    @@@ Ruby
+    main := 'Pony' %do_something
+
+![leaving](leaving.png)
 
 !SLIDE bullets
 # Guards and Nondeterminism
