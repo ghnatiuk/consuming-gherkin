@@ -5,13 +5,18 @@
 !SLIDE bullets incremental
 # Some Perfectly Normal Syntax
 * ^$ \A\Z
-* [A-Za-z] ::alpha::
+* [A-Za-z0-9] [:alnum:]
 * oh (hai|hi) (\w+)
-* fo(?:\w)
+* f(?=o{2})
 * /facepalm
 
-!SLIDE
-# Creating a syntax error
+!SLIDE bullets incremental
+# An Observation
+.notes There may be a better word than observation
+
+* Writing a regular expression that doesn't do what you want
+* is more common than writing one that causes a syntax error
+* despite the fact that it failed because you misunderstood the syntax.
 
 !SLIDE bullets
 # State Machines
