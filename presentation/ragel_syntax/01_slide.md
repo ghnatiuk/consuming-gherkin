@@ -273,6 +273,10 @@
 
 !SLIDE center
     @@@ Ruby
+    any* 'STOP!'
+
+!SLIDE center
+    @@@ Ruby
     any* :>> 'STOP!'
 
 !SLIDE bullets
