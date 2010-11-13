@@ -22,14 +22,15 @@
 * pretty_formatter.feature
 
 !SLIDE bullets incremental
-# Testing
+# What the Tests Told Us
 .notes Event based design of Gherkin came about out of need to easily test lexer
 .notes Remember regex == state machine, so inherently event driven
 .notes Acceptance: when Ragel finishes its work and the current state is not less than the final lexer state
 
 * Parameterize the Lexer's ctor with a listener
 * (Dependency Injection)
-* Test Spy: SexpRecorder
+* Compose listeners for flexibility and additional layers of responsibility
+* Test using a Test Spy listener: SexpRecorder
 
 !SLIDE small
 
