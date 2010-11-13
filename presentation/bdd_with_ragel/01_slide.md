@@ -3,8 +3,8 @@
 * with Ragel
 
 !SLIDE bullets incremental
-* Get Ragel parsing _something_
-* There are no rules (RSpec, then Cucumber)
+# The Steps to Take
+* Get Ragel parsing something 
 * Prove it
 
 !SLIDE 
@@ -34,6 +34,31 @@
 * Test spy: SexpRecorder
 * Parameterize the ctor with object that receives events
 * (Dependency Injection)
+
+!SLIDE small
+
+    @@@ Ruby
+    class Lexer
+      %%{
+        machine lexer;
+        action do_action {
+          # Send the appropriate messages to the listener
+        }
+        main := 'foo' $do_action;
+      }%%
+
+      def initialize(listener)
+        @listener = listener
+        %% write data;
+      end
+
+      def scan(text)
+        data = text.unpack("c*")
+
+        %% write init;
+        %% write exec;
+      end
+    end
 
 !SLIDE
 .notes We know not really sexps but annoying pedants is more fun than being correct
