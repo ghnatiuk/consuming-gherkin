@@ -3,7 +3,7 @@
 ## One Byte at a Time
 
 !SLIDE
-# Who we are
+# Who We Are
 ## Greg Hnatiuk & Mike Sassak
 
 !SLIDE smaller

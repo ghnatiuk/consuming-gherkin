@@ -1,5 +1,10 @@
 !SLIDE
 # The Problems With Regular Expressions
+## There are two
+
+!SLIDE 
+# 1. Syntax
+# 2. Syntax
 
 !SLIDE 
 # Regular expressions are a syntax
@@ -17,25 +22,15 @@
 
 !SLIDE bullets incremental
 # An Observation
-.notes There may be a better word than observation 
 
 * Writing a regular expression that doesn't do what you want
 * is more common than writing one that causes a syntax error
 * despite the fact that it failed because of its syntax.
 
-!SLIDE
-# A Digression Concerning
-# The Availability of T-Shirts
-
 !SLIDE small bullets incremental
 # Semantic Failure, Syntactic Confusion
 * Failures with regular expressions are usually _semantic_
-* (This doesn't mean the syntax is that great)
-
-!SLIDE bullets incremental
-# Two causes of confusion:
-* Syntax
-* Metaphor
+* (This doesn't mean syntax is not the problem)
 
 !SLIDE bullets
 # Syntax
@@ -71,7 +66,7 @@
 * The _states_ are determined by the compiler
 
 !SLIDE
-# Ragel converts expressions into a state machine that reads characters one at a time until it reaches the end of input
+# Ragel clarifies what you are doing when you are working with regular expressions 
 
 !SLIDE center bullets incremental
 # Example: /abc/
