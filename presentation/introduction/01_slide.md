@@ -14,11 +14,11 @@
 # Ragel
 * A tool for building parsers...
 * ...by specifying state machines...
-* ...with regular expressions.
+* ...in a regular language.
 
 !SLIDE bullets incremental
 # Some people, when confronted with a problem, think "I know, I'll use regular expressions." 
 
 !SLIDE center
-# "Now they have two problems"
+# "Now they have two problems."
 ![atreyu](atreyu.png)
