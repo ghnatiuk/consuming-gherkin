@@ -249,7 +249,7 @@
 !SLIDE center bullets
 # Finishing Action
     @@@ Ruby
-    main := ('pon' 'y'+) @do_something
+    main := ('pon' 'y'+) @print_details
 
 *  
 
