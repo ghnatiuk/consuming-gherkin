@@ -2,6 +2,10 @@
 # Consuming Gherkin
 ## One Byte at a Time
 
+!SLIDE
+# Who We Are
+## Greg Hnatiuk & Mike Sassak
+
 !SLIDE smaller
 # Step
     I18N_Step = ("Given " | "When " | "Then ") \ 
@@ -14,7 +18,7 @@
 # Ragel
 * A tool for building parsers...
 * ...by specifying state machines...
-* ...in a regular language.
+* ...with regular expressions.
 
 !SLIDE bullets incremental
 # Some people, when confronted with a problem, think "I know, I'll use regular expressions." 

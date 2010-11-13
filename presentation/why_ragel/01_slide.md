@@ -1,3 +1,0 @@
-!SLIDE 
-# Why Ragel?
-
