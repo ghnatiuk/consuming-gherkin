@@ -57,7 +57,7 @@
 # "Oh my god you guys! My class definition retrieved a record from the database!"
 
 !SLIDE 
-# Regular Expressions Are A Syntax For Specifying State Machines
+# Regular Expressions Are A _Syntax_ For Specifying State Machines
 
 !SLIDE bullets
 # State Machines
