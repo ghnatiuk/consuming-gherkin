@@ -18,7 +18,6 @@
         %%write exec;
       end
     end
-*
 
 !SLIDE bullets
     @@@ Ruby
