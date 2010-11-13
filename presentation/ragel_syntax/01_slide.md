@@ -172,6 +172,25 @@
     end
 * %%write exec
 
+!SLIDE bullets
+    @@@ Ruby
+    class RagelTest
+      %%{
+        machine m;
+        action print_me { puts data[p].chr; }
+        Vowels = [aeiou] >print_me;
+        main := (Vowels | any)+;
+      }%%
+
+      def initialize(str)
+        %%write data;
+        data = str.unpack("c*");
+        %%write init;
+        %%write exec;
+      end
+    end
+* data and p
+
 !SLIDE center
 ![parts_of_speech](parts_of_speech.png)
 
@@ -191,14 +210,60 @@
     /text/
     any, white, lower, alnum, digit
 
-!SLIDE bullets 
-# Regular Language Operators
+!SLIDE
+# Operators
 
-* Union
-* Intersection
-* Difference
-* Concatenation
-* Kleene star, etc... (*, +, ?, !)
+!SLIDE bullets center
+## Kleene star
+    @@@ Ruby
+    'words'*
+## One or more
+    @@@ Ruby
+    'words'+
+## Optional
+    @@@ Ruby
+    'words'?
+## Negation
+    @@@ Ruby
+    !'words'
+    ^'\n'
+!SLIDE center
+# Union
+    @@@ Ruby
+    'foo' | 'bar'
+!SLIDE center
+# Intersection
+    @@@ Ruby
+    any{10} & [aeiou]
+!SLIDE center
+# Difference
+    @@@ Ruby
+    any+ - 'foo'
+
+!SLIDE center
+# Concatenation
+    @@@ Ruby
+    [a-z]* . '\n'
+
+!SLIDE center
+# Concatenation
+    @@@ Ruby
+    [a-z]* '\n'
+
+!SLIDE
+    @@@Ruby
+    EOL = ('\n' | '\r\n');
+
+    Tag = ('@' [^@\r\n\t ]+);
+  
+    I18N_Step = ("* " | "Given " | 
+       "When " | "Then " | "And " | "But ");
+
+!SLIDE center
+###  tokens = BOM? (space | EOL)* (Tags | Comment | FeatureHeading | BackgroundHeading | ScenarioHeading | ScenarioOutlineHeading | ExamplesH    eading | Step | Row | PyString)* (space | EOL)* EOF;
+
+!SLIDE 
+# So what?
 
 !SLIDE bullets center
 # Actions
@@ -249,7 +314,7 @@
 !SLIDE center bullets
 # Finishing Action
     @@@ Ruby
-    main := ('pon' 'y'+) @do_something
+    main := ('pon' 'y'+) @print_details
 
 *  
 
@@ -266,24 +331,51 @@
 
 !SLIDE 
 # Guards and Nondeterminism
-!SLIDE bullets
-
-* finish-guarded
-* :>>
 
 !SLIDE center
     @@@ Ruby
-    any* :>> 'STOP!'
-
-!SLIDE bullets
-* entry-guarded
-* :>
-
-!SLIDE center
+    any* 'No';
+!SLIDE center bullets
     @@@ Ruby
-    any* :> 'STOP!'
+    any* 'No';
+*  
+![no_guard](no_guard.png)
+
+!SLIDE center bullets
+    @@@ Ruby
+    any* :>> 'No';
+*  
+![guard](guard.png)
+### Finish-guarded
+
+!SLIDE center bullets
+
+    @@@ Ruby
+    any* :> 'No';
+*  
+![entryguard](entryguard.png)
+### Entry-guarded
 
 !SLIDE bullets
 * left-guarded       <:
 * longest-match      **
 * named-priorities
+
+!SLIDE bullets
+    @@@ Ruby
+
+    action begin_content {
+      @content_start = p
+      @current_line = @line_number
+    }
+
+    action store_tag_content {
+      con = utf8_pack(data[@content_start...p])
+      @listener.tag(con, @curent_line)
+    }
+
+    Tag = (('@' [^@\r\n\t ]+) >begin_content) \
+      %store_tag_content;
+
+!SLIDE center
+![lexer_common](lexer_common.png)
