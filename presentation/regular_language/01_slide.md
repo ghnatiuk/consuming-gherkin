@@ -77,5 +77,3 @@
 # Example: /abc/
 * "a", "b" and "c" are named transitions
 * ![abc](abc.png)
-
-
