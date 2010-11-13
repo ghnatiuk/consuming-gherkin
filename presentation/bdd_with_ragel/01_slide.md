@@ -32,17 +32,13 @@
 * Compose listeners for flexibility and additional layers of responsibility
 * Test using a Test Spy listener: SexpRecorder
 
-!SLIDE small
+!SLIDE
+# Parameterize the Constructor
 
     @@@ Ruby
     class Lexer
-      %%{
-        machine lexer;
-        action do_action {
-          # Send the appropriate messages to the listener
-        }
-        main := 'foo' $do_action;
-      }%%
+
+      # Ragel machine definitions here
 
       def initialize(listener)
         @listener = listener
@@ -51,13 +47,32 @@
 
       def scan(text)
         data = text.unpack("c*")
-
         %% write init;
         %% write exec;
       end
     end
 
+!SLIDE small
+## Named Actions Send Messages to the Listener
+
+    Tag = ('@' [^@\r\n\t ]+) %store_tag_content;
+
+    action store_tag_content {
+      @listener.tag(data[start...p], @current_line)
+    }
+
+!SLIDE smaller
+# Compose Listeners
+    @@@ Ruby
+    builder   = Cucumber::GherkinBuilder.new
+    filter    = Gherkin::FilterFormatter.new(builder)
+    tag_count = Gherkin::TagCountFormatter.new(filter)
+    parser    = Gherkin::Parser.new(tag_count)
+
+    parser.parse(source)
+
 !SLIDE
+# Test Spy Listener
 .notes We know not really sexps but annoying pedants is more fun than being correct
 
     @@@ Ruby
@@ -149,7 +164,3 @@
     Then "there should be no parse errors" do
       @listener.errors.should == []
     end
-
-!SLIDE
-* utf8_pack
-* 1.8/1.9 and UTF8
