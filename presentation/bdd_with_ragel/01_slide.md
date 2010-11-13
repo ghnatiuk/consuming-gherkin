@@ -91,15 +91,6 @@
       end
     end
 
-!SLIDE
-* coupla refactorings as we learned more
-
-!SLIDE
-* shared examples
-
-!SLIDE
-* pretty_formatter.feature
-
 !SLIDE bullets incremental
 # What the Tests Told Us
 .notes Event based design of Gherkin came about out of need to easily test lexer
