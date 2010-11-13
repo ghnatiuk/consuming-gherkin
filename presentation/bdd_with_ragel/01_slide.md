@@ -6,11 +6,90 @@
 # Externalize Evidence of Operation
 * Make assertions on the collected evidence
 
-!SLIDE 
-* 1st passing test example (spec side-by-side w/ ragel)
+!SLIDE small
+# git show c8f94a3
+    commit c8f94a39e88d1203acb807ee0ba39a729152b87f
+    Author: Aslak Hellesøy <aslak.hellesoy@gmail.com>
+    Date:   Tue Sep 1 04:47:51 2009 +0200
 
-!SLIDE 
-* changes (spec side-by-side w/ ragel)
+        Some basics up and running. 
+        Still no idea what I'm doing with Ragel
+
+!SLIDE small
+    @@@ Ruby
+    class Table
+      %%{
+        machine table;
+        
+        EOL = '\r'? '\n';
+        BAR = '|';
+        
+        cell = alpha @ { puts data[p, fpc].pack("c*") };
+        table_row = space* BAR (cell BAR)+ space* EOL;
+        table = table_row+;
+        
+        main := table @ { puts "TABLE DONE" } ;
+      }%%
+
+      def initialize
+        %% write data;
+      end
+
+      def parse(data)
+        data = data.unpack("c*") if data.is_a?(String)
+        %% write init;
+        %% write exec;
+      end
+    end
+
+!SLIDE
+    @@@ Ruby
+    describe Table do
+      tables = {
+        "|a|b|\n"        => [%w{a b}],
+        "|c|d|\n|e|f|\n" => [%w{c d}, %w{e f}]
+      }
+                            
+      tables.each do |text, expected|
+        it "should parse #{text}" do
+          Table.new.parse(text)
+        end
+      end
+    end
+
+!SLIDE
+    @@@ Ruby
+    describe Table do
+      tables = {
+        "|a|b|\n"        => [%w{a b}],
+        "|a|b|c|\n"      => [%w{a b c}],
+        "|c|d|\n|e|f|\n" => [%w{c d}, %w{e f}]
+      }
+      
+      tables.each do |text, expected|
+        it "should parse #{text}" do
+          Table.new.parse(text).
+                    should == expected
+        end
+      end
+    end
+
+!SLIDE
+# Verily Behold The Proper Use of a Mock Object
+
+!SLIDE small
+    @@@ Ruby
+    describe Table do
+      def scan(text, expected)
+        listener = mock('listener')
+        listener.should_receive(:table).with(expected)
+        Table.new.scan(text, listener)
+      end
+
+      it "should parse a 1x2 table with newline" do
+        scan(" | 1 | 2 | \n", [%w{1 2}])
+      end
+    end
 
 !SLIDE
 * coupla refactorings as we learned more
