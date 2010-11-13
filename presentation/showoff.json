@@ -1,7 +1,6 @@
 { "name": "Consuming Gherkin", "sections": [ 
   {"section":"introduction"},
   {"section":"ragel_syntax"},
-  {"section":"bdd"},
   {"section":"bdd_with_ragel"},
   {"section":"why_ragel"},
   {"section":"when_ragel"},

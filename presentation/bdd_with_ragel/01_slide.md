@@ -1,5 +1,6 @@
-!SLIDE 
-# BDD with Ragel
+!SLIDE bullets incremental 
+# BDD (or TDD, or software development, or whatever) 
+* with Ragel
 
 !SLIDE bullets incremental
 * Get Ragel parsing _something_
