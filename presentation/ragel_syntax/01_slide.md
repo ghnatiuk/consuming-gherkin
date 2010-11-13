@@ -340,6 +340,7 @@
     any* 'No';
 *  
 ![no_guard](no_guard.png)
+### Without a guard
 
 !SLIDE center bullets
     @@@ Ruby
