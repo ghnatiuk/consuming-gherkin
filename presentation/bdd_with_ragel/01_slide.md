@@ -6,11 +6,90 @@
 # Externalize Evidence of Operation
 * Make assertions on the collected evidence
 
-!SLIDE 
-* 1st passing test example (spec side-by-side w/ ragel)
+!SLIDE small
+# git show c8f94a3
+    commit c8f94a39e88d1203acb807ee0ba39a729152b87f
+    Author: Aslak Hellesøy <aslak.hellesoy@gmail.com>
+    Date:   Tue Sep 1 04:47:51 2009 +0200
 
-!SLIDE 
-* changes (spec side-by-side w/ ragel)
+        Some basics up and running. 
+        Still no idea what I'm doing with Ragel
+
+!SLIDE small
+    @@@ Ruby
+    class Table
+      %%{
+        machine table;
+        
+        EOL = '\r'? '\n';
+        BAR = '|';
+        
+        cell = alpha @ { puts data[p, fpc].pack("c*") };
+        table_row = space* BAR (cell BAR)+ space* EOL;
+        table = table_row+;
+        
+        main := table @ { puts "TABLE DONE" } ;
+      }%%
+
+      def initialize
+        %% write data;
+      end
+
+      def parse(data)
+        data = data.unpack("c*") if data.is_a?(String)
+        %% write init;
+        %% write exec;
+      end
+    end
+
+!SLIDE
+    @@@ Ruby
+    describe Table do
+      tables = {
+        "|a|b|\n"        => [%w{a b}],
+        "|c|d|\n|e|f|\n" => [%w{c d}, %w{e f}]
+      }
+                            
+      tables.each do |text, expected|
+        it "should parse #{text}" do
+          Table.new.parse(text)
+        end
+      end
+    end
+
+!SLIDE
+    @@@ Ruby
+    describe Table do
+      tables = {
+        "|a|b|\n"        => [%w{a b}],
+        "|a|b|c|\n"      => [%w{a b c}],
+        "|c|d|\n|e|f|\n" => [%w{c d}, %w{e f}]
+      }
+      
+      tables.each do |text, expected|
+        it "should parse #{text}" do
+          Table.new.parse(text).
+                    should == expected
+        end
+      end
+    end
+
+!SLIDE
+# Verily Behold The Proper Use of a Mock Object
+
+!SLIDE small
+    @@@ Ruby
+    describe Table do
+      def scan(text, expected)
+        listener = mock('listener')
+        listener.should_receive(:table).with(expected)
+        Table.new.scan(text, listener)
+      end
+
+      it "should parse a 1x2 table with newline" do
+        scan(" | 1 | 2 | \n", [%w{1 2}])
+      end
+    end
 
 !SLIDE
 * coupla refactorings as we learned more
@@ -32,17 +111,13 @@
 * Compose listeners for flexibility and additional layers of responsibility
 * Test using a Test Spy listener: SexpRecorder
 
-!SLIDE small
+!SLIDE
+# Parameterize the Constructor
 
     @@@ Ruby
     class Lexer
-      %%{
-        machine lexer;
-        action do_action {
-          # Send the appropriate messages to the listener
-        }
-        main := 'foo' $do_action;
-      }%%
+
+      # Ragel machine definitions here
 
       def initialize(listener)
         @listener = listener
@@ -51,13 +126,32 @@
 
       def scan(text)
         data = text.unpack("c*")
-
         %% write init;
         %% write exec;
       end
     end
 
+!SLIDE small
+## Named Actions Send Messages to the Listener
+
+    Tag = ('@' [^@\r\n\t ]+) %store_tag_content;
+
+    action store_tag_content {
+      @listener.tag(data[start...p], @current_line)
+    }
+
+!SLIDE smaller
+# Compose Listeners
+    @@@ Ruby
+    builder   = Cucumber::GherkinBuilder.new
+    filter    = Gherkin::FilterFormatter.new(builder)
+    tag_count = Gherkin::TagCountFormatter.new(filter)
+    parser    = Gherkin::Parser.new(tag_count)
+
+    parser.parse(source)
+
 !SLIDE
+# Test Spy Listener
 .notes We know not really sexps but annoying pedants is more fun than being correct
 
     @@@ Ruby
@@ -149,7 +243,3 @@
     Then "there should be no parse errors" do
       @listener.errors.should == []
     end
-
-!SLIDE
-* utf8_pack
-* 1.8/1.9 and UTF8

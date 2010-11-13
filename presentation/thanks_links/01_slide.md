@@ -10,7 +10,7 @@
 !SLIDE bullets
 # Links
 
-* Link to presentation
-* cukes.info
-* complang.org/ragel
-* History of the Two Problems quote: http://regex.info/blog/2006-09-15/247
+* http://github.com/msassak/consuming-gherkin
+* http://cukes.info
+* http://complang.org/ragel
+* http://regex.info/blog/2006-09-15/247
