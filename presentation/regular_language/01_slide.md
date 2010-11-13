@@ -1,3 +1,6 @@
+!SLIDE
+# The Problems With Regular Expressions
+
 !SLIDE 
 # Regular expressions are a syntax
 
@@ -28,12 +31,11 @@
 # Semantic Failure, Syntactic Confusion
 * Failures with regular expressions are usually _semantic_
 * (This doesn't mean the syntax is that great)
-* Two causes of confusion
 
-.notes The primary source is that, well, Regexen are confusing
-.notes It's really easy to write some that are impossible to understand
-.notes Ragel addresses some of the syntax difficulties (but not all) 
-.notes We'll get to that in a second, but the other cause is how we think about matching
+!SLIDE bullets incremental
+# Two causes of confusion:
+* Syntax
+* Metaphor
 
 !SLIDE bullets
 # Syntax
@@ -43,6 +45,21 @@
 
 !SLIDE
 # Thinking About Matching
+## What does it mean "to match"?
+## What is doing the matching?
+
+!SLIDE bullets incremental
+# Statements You May Have Heard
+* "I matched the string against the regex"
+* "This regex is matching more than it should"
+* "All I did was try to parse HTML with regexen, and now Cthulhu insists I bring him home to meet Mom." 
+
+!SLIDE
+# REGULAR EXPRESSIONS DO NOT DO THE MATCHING
+## There is no "there" there
+
+!SLIDE
+# "Oh my god you guys! My class definition retrieved a record from the database!"
 
 !SLIDE 
 # Regular Expressions Are A Syntax For Specifying State Machines
@@ -53,9 +70,12 @@
 * The characters of input are the _events_
 * The _states_ are determined by the compiler
 
+!SLIDE
+# Ragel converts expressions into a state machine that reads characters one at a time until it reaches the end of input
+
 !SLIDE center bullets incremental
 # Example: /abc/
 * "a", "b" and "c" are named transitions
 * ![abc](abc.png)
 
-.notes Ragel converts a series of machines into a table-driven* FSM that reads bytes one at a time until it reaches the end of input
+
